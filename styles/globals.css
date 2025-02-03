@@ -1,10 +1,92 @@
 html,
 body {
-   padding: 0;
-   margin: 0;
-   font-family: 'Inter', sans-serif;
+  padding: 0;
+  margin: 0;
+  font-family: "Inter", sans-serif;
 }
 
 * {
-   box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+
+/* Global SVG Styles */
+svg {
+  font-family: "Russo One", sans-serif;
+  width: 100%;
+  height: auto;
+}
+
+svg text {
+  animation: stroke 5s infinite alternate;
+  stroke-width: 2;
+  stroke: #365fa0;
+  font-size: 6rem; /* Default font-size for larger screens */
+}
+
+/* Animation Keyframes */
+@keyframes stroke {
+  0% {
+    fill: rgba(72, 138, 204, 0);
+    stroke: rgba(54, 95, 160, 1);
+    stroke-dashoffset: 25%;
+    stroke-dasharray: 0 50%;
+    stroke-width: 2;
+  }
+  70% {
+    fill: rgba(72, 138, 204, 0);
+    stroke: rgba(54, 95, 160, 1);
+  }
+  80% {
+    fill: rgba(72, 138, 204, 0);
+    stroke: rgba(54, 95, 160, 1);
+    stroke-width: 3;
+  }
+  100% {
+    fill: rgba(72, 138, 204, 1);
+    stroke: rgba(54, 95, 160, 0);
+    stroke-dashoffset: -25%;
+    stroke-dasharray: 50% 0;
+    stroke-width: 0;
+  }
+}
+
+/* Wrapper Styles */
+.wrapper {
+  background-color: #ffffff;
+}
+
+/* Media Queries for Different Devices */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  svg text {
+    font-size: 4rem; /* Smaller font size for tablets */
+    stroke-width: 2;
+  }
+}
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+  svg text {
+    font-size: 3rem; /* Smaller font size for phones */
+    stroke-width: 1.5;
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+  svg text {
+    font-size: 2rem; /* Even smaller font size for very small devices */
+    stroke-width: 1;
+  }
+}
+
+/* Extra Small Mobile Devices */
+@media (max-width: 320px) {
+  svg text {
+    font-size: 1.5rem; /* Very small font size for the smallest screens */
+    stroke-width: 1;
+  }
 }

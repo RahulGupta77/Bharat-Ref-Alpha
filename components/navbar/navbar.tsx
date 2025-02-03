@@ -1,4 +1,4 @@
-import { Button, Link, Navbar, Text, useTheme } from "@nextui-org/react";
+import { Link, Navbar, Text, useTheme } from "@nextui-org/react";
 import { useTheme as useNextTheme } from "next-themes";
 import Image from "next/image";
 import Logo from "../../assets/Logo.png";
@@ -42,13 +42,13 @@ export const Nav = () => {
         </Link>
       </Navbar.Brand>
 
-      <Navbar.Content>
+      {/* <Navbar.Content>
         <Navbar.Item>
           <Button auto flat href="#">
             Contact Us
           </Button>
         </Navbar.Item>
-      </Navbar.Content>
+      </Navbar.Content> */}
     </Navbar>
   );
 };
