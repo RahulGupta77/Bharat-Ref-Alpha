@@ -7,11 +7,7 @@ function App() {
     <div className=" min-h-screen flex flex-col">
       <Toaster />
       <Navbar />
-      <div
-        style={{
-          paddingTop: "90px",
-        }}
-      >
+      <div className=" pt-[50px] pl-[20px] pr-[30px] lg:pl-[50px]">
         <Outlet />
       </div>
     </div>

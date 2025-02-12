@@ -40,7 +40,7 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="flex h-20 w-full shrink-0 items-center px-4 md:px-6 shadow-md bg-white fixed top-0">
+    <header className="flex h-20 w-full shrink-0 items-center px-4 md:px-6 shadow-md bg-white fixed top-0 z-50">
       {/* Mobile Menu */}
       <Sheet>
         <SheetTrigger asChild>
@@ -81,10 +81,10 @@ const Navbar = () => {
       <NavLink to="/" className="mr-6 hidden lg:flex items-center">
         <img
           src="/assets/bharat_logo.png"
-          className="h-10 w-14"
+          className="h-12 w-16 ml-6"
           alt="Bharat Refrigeration Logo"
         />
-        <span className="ml-5 font-semibold text-xl">Bharat Refrigeration</span>
+        {/* <span className="ml-5 font-semibold text-xl">Bharat Refrigeration</span> */}
       </NavLink>
 
       {/* Desktop Navigation */}
