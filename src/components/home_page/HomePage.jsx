@@ -18,7 +18,7 @@ const HomePage = () => {
             <span className="bg-gradient-to-r from-[#FFA500] to-[#FF4500] text-transparent bg-clip-text">
               Bharat Refrigeration,
             </span>{" "}
-            A.M.C Expert for all{" "}
+            Industrial Expert for{" "}
             <div className="bg-gradient-to-r from-[#61DAFB] via-[#1fc0f1] to-[#03a3d7] text-transparent bg-clip-text">
               Air-Conditioning
             </div>{" "}
@@ -79,6 +79,8 @@ const HomePage = () => {
 
         <CoreCompetencies />
       </section>
+
+      <Separator />
     </>
   );
 };
