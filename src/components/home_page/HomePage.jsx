@@ -1,10 +1,6 @@
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Separator } from "@/components/ui/separator";
 import React from "react";
-import { IoReaderOutline } from "react-icons/io5";
-import { MdPhoneInTalk } from "react-icons/md";
-import { Link } from "react-router-dom";
-import { Button } from "../ui/button"; // Assuming you have a custom Button component
 import { CoreCompetencies } from "./CoreCompetencies";
 
 const HomePage = () => {
@@ -31,7 +27,7 @@ const HomePage = () => {
           </p>
 
           {/* Buttons */}
-          <div className="flex flex-col md:flex-row items-center md:justify-center lg:justify-start space-y-4 md:space-y-0 md:space-x-4">
+          {/* <div className="flex flex-col md:flex-row items-center md:justify-center lg:justify-start space-y-4 md:space-y-0 md:space-x-4">
             <Button className="w-full md:w-1/3 ">
               <Link
                 to={"/services"}
@@ -51,7 +47,7 @@ const HomePage = () => {
               <MdPhoneInTalk />
               Contact Us
             </Link>
-          </div>
+          </div> */}
         </div>
 
         <div className="md:w-[550px] w-[370px] lg:w-[700px]">
