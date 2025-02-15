@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   const links = [
-    { name: "About", path: "/about" },
-    { name: "Privacy Policy", path: "/privacy-policy" },
-    { name: "Licensing", path: "/licensing" },
-    { name: "Contact", path: "/contact" },
+    // { name: "About", path: "/about" },
+    // { name: "Privacy Policy", path: "/privacy-policy" },
+    // { name: "Licensing", path: "/licensing" },
+    { name: "Contacts", path: "/contacts" },
   ];
 
   return (

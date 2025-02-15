@@ -1,12 +1,13 @@
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import emailjs from "@emailjs/browser";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { useState } from "react";
-
-import { Card } from "@/components/ui/card";
+import { Link } from "react-router-dom";
 
 const Contacts = () => {
   const [formData, setFormData] = useState({
@@ -16,15 +17,18 @@ const Contacts = () => {
     message: "",
   });
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
 
   const validate = () => {
     let tempErrors = {};
-    if (!formData.name) tempErrors.name = "Name is required";
-    if (!formData.phone.match(/^\d{10}$/))
+    if (!formData.name.trim()) tempErrors.name = "Name is required";
+    if (!/^\d{10}$/.test(formData.phone))
       tempErrors.phone = "Enter a valid 10-digit phone number";
-    if (!formData.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/))
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
       tempErrors.email = "Enter a valid email";
-    if (!formData.message) tempErrors.message = "Message cannot be empty";
+    if (!formData.message.trim())
+      tempErrors.message = "Message cannot be empty";
     setErrors(tempErrors);
     return Object.keys(tempErrors).length === 0;
   };
@@ -42,16 +46,44 @@ const Contacts = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validate()) {
-      console.log("Form submitted successfully", formData);
+    if (!validate()) return;
+
+    setLoading(true);
+    setSuccessMessage("");
+
+    try {
+      const response = await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_phone: formData.phone,
+          from_email: formData.email,
+          message: formData.message,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
+      if (response.status === 200) {
+        setSuccessMessage("Message sent successfully!");
+        setFormData({ name: "", phone: "", email: "", message: "" });
+      } else {
+        setErrors({
+          general: "Failed to send message. Please try again later.",
+        });
+      }
+    } catch (error) {
+      setErrors({ general: "Error sending message. Please try again later." });
     }
+
+    setLoading(false);
   };
 
   return (
     <div className="flex justify-center items-center min-h-[80vh]">
-      <Card className="w-[75vw] h-fit p-5">
+      <Card className="w-[90vw] lg:w-[75vw] h-fit p-5 ">
         <div className="flex flex-col md:flex-row gap-10 p-6">
           {/* Left Section: Contact Form */}
           <div className="w-full md:w-1/2">
@@ -101,25 +133,31 @@ const Contacts = () => {
                 value={formData.message}
                 onChange={handleChange}
                 onKeyDown={handleKeyDown}
-                className="w-full p-2 border rounded-md"
               />
               {errors.message && (
                 <p className="text-red-500 text-sm">{errors.message}</p>
               )}
 
               <div className="flex items-center space-x-2">
-                <Checkbox id="privacy" />
+                <Checkbox id="privacy" required />
                 <Label htmlFor="privacy" className="text-sm">
                   By selecting this you agree to our{" "}
-                  <a href="#" className="underline">
+                  <Link to="/" className="underline">
                     Privacy Policy
-                  </a>
+                  </Link>
                   .
                 </Label>
               </div>
 
-              <Button type="submit" className="w-full">
-                Send message
+              {errors.general && (
+                <p className="text-red-500 text-sm">{errors.general}</p>
+              )}
+              {successMessage && (
+                <p className="text-green-500 text-sm">{successMessage}</p>
+              )}
+
+              <Button type="submit" className="w-full" disabled={loading}>
+                {loading ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </div>
@@ -128,13 +166,11 @@ const Contacts = () => {
           <div className="w-full md:w-1/2 space-y-6">
             <div>
               <h3 className="text-xl font-bold flex items-center gap-2">
-                <MapPin /> Visit our offices
+                <MapPin /> Visit our office
               </h3>
               <p className="text-gray-600">
-                New Mexico: 4140 Parker Rd. Allentown, NM 31134
-              </p>
-              <p className="text-gray-600">
-                Hawaii: 1901 Thornridge Cir. Shiloh, HI 81063
+                1302 Rishikesh Heights, Plot 12A, Sector 24, Taloja Phase 2,
+                Navi Mumbai
               </p>
             </div>
 
@@ -142,16 +178,20 @@ const Contacts = () => {
               <h3 className="text-xl font-bold flex items-center gap-2">
                 <Mail /> Email us
               </h3>
-              <p className="text-gray-600">Sales: sales@example.com</p>
-              <p className="text-gray-600">Careers: careers@example.com</p>
+              <p className="text-gray-600">
+                General Inquiries: info@example.com
+              </p>
+              <p className="text-gray-600">
+                Admin Support: admin@amcbharat.com
+              </p>
             </div>
 
             <div>
               <h3 className="text-xl font-bold flex items-center gap-2">
                 <Phone /> Call us
               </h3>
-              <p className="text-gray-600">+1 234 567 8901</p>
-              <p className="text-gray-600">+1 987 654 3210</p>
+              <p className="text-gray-600">+91 8010030963</p>
+              <p className="text-gray-600">+91 8766030074</p>
             </div>
           </div>
         </div>
