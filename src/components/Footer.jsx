@@ -1,3 +1,4 @@
+import { Separator } from "@/components/ui/separator";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -11,6 +12,8 @@ const Footer = () => {
 
   return (
     <footer className="bg-white dark:bg-gray-800 rounded-lg  m-4">
+      <Separator />
+
       <div className="w-full max-w-screen-xl mx-auto px-4 py-6 flex flex-col md:flex-row md:items-center md:justify-between text-center md:text-left">
         {/* Copyright Text */}
         <span className="text-sm text-gray-500 dark:text-gray-400">

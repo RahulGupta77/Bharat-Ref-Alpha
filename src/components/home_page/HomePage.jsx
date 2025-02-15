@@ -10,7 +10,7 @@ import { CoreCompetencies } from "./CoreCompetencies";
 const HomePage = () => {
   return (
     <>
-      <section className="container grid lg:grid-cols-2 place-items-center pt-20 md:pt-24 gap-10">
+      <section className="container grid lg:grid-cols-2 place-items-center gap-10">
         {/* Left Column: Text Content */}
         <div className="text-center lg:text-start space-y-6">
           {/* Main Heading */}
@@ -79,8 +79,6 @@ const HomePage = () => {
 
         <CoreCompetencies />
       </section>
-
-      <Separator />
     </>
   );
 };
