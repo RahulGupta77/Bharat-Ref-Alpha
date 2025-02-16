@@ -239,10 +239,6 @@ const Contacts = () => {
               </div>
               <div className="flex flex-col gap-y-3  w-full">
                 <h3 className="text-xl font-bold ">Call Us</h3>
-                {/* <p className="text-gray-600">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse,
-                  consectetur.
-                </p> */}
 
                 <div className="md:flex md:gap-x-4 w-full ">
                   <div className=" md:w-1/2 ">

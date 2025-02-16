@@ -9,10 +9,10 @@ import { CoreCompetencies } from "./CoreCompetencies";
 
 const HomePage = () => {
   return (
-    <>
-      <section className="container grid lg:grid-cols-2 place-items-center gap-10">
+    <div className="flex flex-col items-center">
+      <section className="container grid lg:grid-cols-2 place-items-center gap-12 mt-32 lg:mt-40">
         {/* Left Column: Text Content */}
-        <div className="text-center lg:text-start space-y-6">
+        <div className="text-center lg:text-start space-y-6 lg:-ml-10">
           {/* Main Heading */}
           <h1 className="text-5xl md:text-6xl font-bold">
             <span className="bg-gradient-to-r from-[#FFA500] to-[#FF4500] text-transparent bg-clip-text">
@@ -46,7 +46,7 @@ const HomePage = () => {
             <Link
               to={"/contacts"}
               rel="noopener noreferrer"
-              className="w-full md:w-1/3 flex items-center justify-center gap-3 px-4 py-2 border rounded-md hover:bg-gray-100 transition-colors"
+              className="w-full md:w-1/3 flex items-center justify-center gap-3 px-4 py-2 border rounded-md bg-white hover:bg-gray-100 transition-colors"
             >
               <MdPhoneInTalk />
               Contact Us
@@ -70,8 +70,8 @@ const HomePage = () => {
 
       <Separator />
 
-      <section className="py-10 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold">
+      <section className="py-10 ">
+        <h2 className="text-3xl md:text-4xl font-bold text-center">
           <span className="bg-gradient-to-r from-[#FFA500] to-[#FF4500] text-transparent bg-clip-text">
             Our Core Competencies{" "}
           </span>
@@ -79,7 +79,7 @@ const HomePage = () => {
 
         <CoreCompetencies />
       </section>
-    </>
+    </div>
   );
 };
 

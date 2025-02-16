@@ -63,7 +63,7 @@ export function CoreCompetencies() {
                           />
                         </AspectRatio>
                         <div className="absolute inset-0 flex items-end justify-center">
-                          <span className="text-white text-lg bg-black bg-opacity-50 h-fit w-full font-semibold pt-2 pb-2">
+                          <span className="text-white text-lg text-center bg-black bg-opacity-50 h-fit w-full font-semibold pt-2 pb-2">
                             {title}
                           </span>
                         </div>

@@ -11,7 +11,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-white dark:bg-gray-800 rounded-lg  m-4">
+    <footer className=" rounded-lg ">
       <Separator />
 
       <div className="w-full max-w-screen-xl mx-auto px-4 py-6 flex flex-col md:flex-row md:items-center md:justify-between text-center md:text-left">
