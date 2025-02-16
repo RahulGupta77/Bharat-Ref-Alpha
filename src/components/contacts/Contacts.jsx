@@ -82,7 +82,7 @@ const Contacts = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-[100vh] mt-36 lg:mt-8">
+    <div className="flex justify-center items-center min-h-[100vh] mt-36 lg:mt-8 mb-12 lg:mb-0">
       <Card className="w-[90vw] lg:w-[75vw]  overflow-hidden ">
         <div className="flex h-full flex-col lg:flex-row gap-10">
           {/* Left Section: Contact Form */}
@@ -162,7 +162,7 @@ const Contacts = () => {
           </div>
 
           {/* Right Section: Contact Info */}
-          <div className="w-full h-full lg:w-1/2 space-y-8  bg-slate-50 p-11">
+          <div className="w-full h-full lg:w-1/2 space-y-8  bg-[#f9f9f9] p-11">
             <div className="flex gap-x-4">
               <div>
                 <MapPin />
