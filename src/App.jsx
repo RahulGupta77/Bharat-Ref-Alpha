@@ -8,7 +8,7 @@ function App() {
     <div className=" min-h-screen flex flex-col">
       <Toaster />
       <Navbar />
-      <div className="pt-36 md:pt-24 sm:px-[10px] lg:pl-[50px]">
+      <div className="">
         <Outlet />
       </div>
       <Footer />

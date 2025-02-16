@@ -1,13 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
 import emailjs from "@emailjs/browser";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import MailtoLink from "./MailtoLink";
+import PhoneLink from "./PhoneLink";
 
 const Contacts = () => {
   const [formData, setFormData] = useState({
@@ -82,18 +82,17 @@ const Contacts = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-[80vh]">
-      <Card className="w-[90vw] lg:w-[75vw] h-fit p-5 ">
-        <div className="flex flex-col md:flex-row gap-10 p-6">
+    <div className="flex justify-center items-center min-h-[100vh] mt-36 lg:mt-8">
+      <Card className="w-[90vw] lg:w-[75vw]  overflow-hidden ">
+        <div className="flex h-full flex-col lg:flex-row gap-10">
           {/* Left Section: Contact Form */}
-          <div className="w-full md:w-1/2">
+          <div className="w-full lg:w-1/2 p-11 flex flex-col gap-y-5">
             <h2 className="text-3xl font-bold">Get in touch</h2>
             <p className="text-gray-600 mb-6">
-              We&apos;re here to help and answer any questions you might have.
-              We look forward to hearing from you! Our team is ready to assist
-              you within 24 hours.
+              We&apos;re here to help! Reach out with any questions, and our
+              team will assist you within 24 hours.
             </p>
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-7">
               <Input
                 placeholder="Name"
                 name="name"
@@ -137,7 +136,7 @@ const Contacts = () => {
               {errors.message && (
                 <p className="text-red-500 text-sm">{errors.message}</p>
               )}
-
+              {/* 
               <div className="flex items-center space-x-2">
                 <Checkbox id="privacy" required />
                 <Label htmlFor="privacy" className="text-sm">
@@ -147,7 +146,7 @@ const Contacts = () => {
                   </Link>
                   .
                 </Label>
-              </div>
+              </div> */}
 
               {errors.general && (
                 <p className="text-red-500 text-sm">{errors.general}</p>
@@ -163,36 +162,107 @@ const Contacts = () => {
           </div>
 
           {/* Right Section: Contact Info */}
-          <div className="w-full md:w-1/2 space-y-6">
-            <div>
-              <h3 className="text-xl font-bold flex items-center gap-2">
-                <MapPin /> Visit our office
-              </h3>
-              <p className="text-gray-600">
-                1302 Rishikesh Heights, Plot 12A, Sector 24, Taloja Phase 2,
-                Navi Mumbai
-              </p>
+          <div className="w-full h-full lg:w-1/2 space-y-8  bg-slate-50 p-11">
+            <div className="flex gap-x-4">
+              <div>
+                <MapPin />
+              </div>
+              <div className="flex flex-col gap-y-3 4 w-full">
+                <h3 className="text-xl font-bold ">Visit our office</h3>
+                {/* <p className="text-gray-600">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse,
+                  consectetur.
+                </p> */}
+
+                <div className="md:flex md:gap-x-4 4 w-full">
+                  <div className=" md:w-1/2">
+                    <p className="text-md font-bold">Head Office</p>
+                    <p className="text-gray-600 mt-2 text-wrap ">
+                      007 Jewels of Alibag, Vidyanagar East, Alibag,
+                      Raigad-402201
+                    </p>
+                  </div>
+
+                  <div className="md:w-1/2 mt-4 md:mt-0 ">
+                    <p className="text-md font-bold">Branch Office</p>
+                    <p className="text-gray-600 mt-2">
+                      1302 Rishikesh Heights, Sector 24, Taloja Phase 2, Navi
+                      Mumbai-410208
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div>
-              <h3 className="text-xl font-bold flex items-center gap-2">
-                <Mail /> Email us
-              </h3>
-              <p className="text-gray-600">
-                General Inquiries: info@example.com
-              </p>
-              <p className="text-gray-600">
-                Admin Support: admin@amcbharat.com
-              </p>
+            <Separator />
+
+            <div className="flex gap-x-4">
+              <div>
+                <Mail />
+              </div>
+              <div className="flex flex-col gap-y-3 w-full">
+                <h3 className="text-xl font-bold ">Email Us</h3>
+                {/* <p className="text-gray-600">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse,
+                  consectetur.
+                </p> */}
+
+                <div className="md:flex md:gap-x-4 w-full">
+                  <div className=" md:w-1/2">
+                    <p className="text-md font-bold">General Inquiries: </p>
+                    <p className="text-gray-600 mt-2 text-wrap ">
+                      <MailtoLink
+                        email="info@amcbharat.com"
+                        label="info@amcbharat.com"
+                      />
+                    </p>
+                  </div>
+
+                  <div className="md:w-1/2 mt-4 md:mt-0 ">
+                    <p className="text-md font-bold"> Admin Support:</p>
+                    <p className="text-gray-600 mt-2">
+                      <MailtoLink
+                        email="admin@amcbharat.com"
+                        label="admin@amcbharat.com"
+                      />
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div>
-              <h3 className="text-xl font-bold flex items-center gap-2">
-                <Phone /> Call us
-              </h3>
-              <p className="text-gray-600">+91 8010030963</p>
-              <p className="text-gray-600">+91 8766030074</p>
+            <Separator />
+
+            <div className="flex gap-x-4 ">
+              <div>
+                <Phone />
+              </div>
+              <div className="flex flex-col gap-y-3  w-full">
+                <h3 className="text-xl font-bold ">Call Us</h3>
+                {/* <p className="text-gray-600">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse,
+                  consectetur.
+                </p> */}
+
+                <div className="md:flex md:gap-x-4 w-full ">
+                  <div className=" md:w-1/2 ">
+                    <p className="text-md font-bold">Services: </p>
+                    <p className="text-gray-600 mt-2 text-wrap ">
+                      <PhoneLink phone="+918010030963" label="+91-8010030963" />
+                    </p>
+                  </div>
+
+                  <div className="md:w-1/2 mt-4 md:mt-0 ">
+                    <p className="text-md font-bold"> Sales:</p>
+                    <p className="text-gray-600 mt-2">
+                      <PhoneLink phone="+918766030074" label="+91-8766030074" />
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
+
+            <Separator />
           </div>
         </div>
       </Card>
